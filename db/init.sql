@@ -1,0 +1,6 @@
+CREATE TABLE jobs (
+  id SERIAL PRIMARY KEY,
+  company TEXT NOT NULL,
+  role TEXT NOT NULL,
+  status TEXT NOT NULL
+);

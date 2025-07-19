@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: devpass
+      POSTGRES_DB: righttrack
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+  server:
+    build:
+      context: ./server
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    environment:
+      PGUSER: postgres
+      PGPASSWORD: devpass
+      PGDATABASE: righttrack
+      PGHOST: db
+      PGPORT: 5432
