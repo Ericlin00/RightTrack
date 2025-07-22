@@ -1,6 +1,15 @@
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
 CREATE TABLE jobs (
   id SERIAL PRIMARY KEY,
   company TEXT NOT NULL,
   role TEXT NOT NULL,
-  status TEXT NOT NULL
+  status TEXT NOT NULL,
+  user_id INTEGER REFERENCES users(id),
+  created_at TIMESTAMP DEFAULT NOW()
 );

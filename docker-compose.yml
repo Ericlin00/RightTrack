@@ -25,3 +25,4 @@ services:
       PGDATABASE: righttrack
       PGHOST: db
       PGPORT: 5432
+      JWT_SECRET: dev_secret_key_here  # 👈 required for login to work
